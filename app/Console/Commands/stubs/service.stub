@@ -3,8 +3,35 @@
 namespace {{ namespace }};
 
 use App\Base\ServiceBase;
+use App\Responses\ServiceResponse;
+use Illuminate\Support\Facades\Log;
+use Throwable;
 
 class {{ class }} extends ServiceBase
 {
-    //
+    public function __construct()
+    {
+        
+    }
+
+    /**
+     * Main method of this service
+     *
+     * @return ServiceResponse
+     */
+    public function call(): ServiceResponse
+    {
+        try {
+            
+            return  self::success([], "Success");
+        } catch (Throwable $th) {
+
+            Log::error(self::class, [
+                'Message ' => $th->getMessage(),
+                'On file ' => $th->getFile(),
+                'On line ' => $th->getLine()
+            ]);
+            return self::error(null, $th->getMessage());
+        }
+    }
 }
