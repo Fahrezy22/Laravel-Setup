@@ -11,3 +11,9 @@
 
 -   Composer Install.
 -   Php artisan Migrate
+
+## Custom command
+
+- php artisan make:contrat {contract name}
+- php artisan make:repository {repository name}
+- php artisan make:service {service name}
